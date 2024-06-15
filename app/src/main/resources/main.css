@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('IngredientTableView.css');
+@import url('AdminUserControlView.css');
+@import url('CreateRecipeView.css');
+@import url('CommentListView.css');
+
+/* 
+base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
+base02    #073642  0/4 black    235 #262626 20 -12 -12   7  54  66 192  90  26
+base01    #586e75 10/7 brgreen  240 #585858 45 -07 -07  88 110 117 194  25  46
+base00    #657b83 11/7 bryellow 241 #626262 50 -07 -07 101 123 131 195  23  51
+base0     #839496 12/6 brblue   244 #808080 60 -06 -03 131 148 150 186  13  59
+base1     #93a1a1 14/4 brcyan   245 #8a8a8a 65 -05 -02 147 161 161 180   9  63
+base2     #eee8d5  7/7 white    254 #e4e4e4 92 -00  10 238 232 213  44  11  93
+base3     #fdf6e3 15/7 brwhite  230 #ffffd7 97  00  10 253 246 227  44  10  99
+yellow    #b58900  3/3 yellow   136 #af8700 60  10  65 181 137   0  45 100  71
+orange    #cb4b16  9/3 brred    166 #d75f00 50  50  55 203  75  22  18  89  80
+red       #dc322f  1/1 red      160 #d70000 50  65  45 220  50  47   1  79  86
+magenta   #d33682  5/5 magenta  125 #af005f 50  65 -05 211  54 130 331  74  83
+violet    #6c71c4 13/5 brmagenta 61 #5f5faf 50  15 -45 108 113 196 237  45  77
+blue      #268bd2  4/4 blue      33 #0087ff 55 -10 -45  38 139 210 205  82  82
+cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
+green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60 
+*/
+
+* {
+    -fx-hover-color: derive(black, 50%);
+    -fx-accent-color: derive(#98CC81, 20%);
+    accent-color: derive(#98CC81, 20%);
+    -fx-font-family: "Fira Sans", sans-serif;
+    font-family: "Fira Sans", sans-serif;
+    -fx-main-color: #fdf6e3;
+}
+
+.login-view {
+    -fx-font-size: 14px;
+    font-size: 14px;
+    -fx-font-weight: 700;
+    font-weight: 700;
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+}
+
+.login-view .title {
+    -fx-font-size: 30px;
+    font-size: 30px;
+    -fx-font-weight: 700;
+    font-weight: 700;
+    -fx-effect: dropshadow(three-pass-box, rgba(194, 255, 168, 0.8), 10, 0, 0, 0);
+}
+
+.login-view .password-field {
+    -fx-font-size: 10px;
+    font-size: 10px;
+}
+
+.main-view-pane {
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+}
+
+.scroll-pane,
+.scroll-pane>.viewport {
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
+
+.toolbar {
+    -fx-background-image: url("green-checkered.png");
+    background-image: url("green-checkered.png");
+    -fx-background-repeat: repeat;
+    background-repeat: repeat;
+    -fx-background-size: 50px;
+    background-size: 50px;
+    -fx-border-color: #93a1a1;
+    border-color: #93a1a1;
+    -fx-border-width: 0 0 3px 0;
+    border-width: 0 0 3px 0;
+}
+
+.searchBarBox,
+.login-box {
+    -fx-background-color: derive(-fx-accent-color, -20%);
+    background-color: derive(-fx-accent-color, -20%);
+    -fx-border-color: black;
+    border-color: black;
+    -fx-border-width: 1px;
+    border-width: 1px;
+    -fx-border-radius: 5px;
+    border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.searchBarBox .button,
+.login-view .button,
+.searchBarBox .favourite-box .toggle-button {
+    -fx-cursor: hand;
+    cursor: hand;
+    -fx-min-width: 40px;
+    min-width: 40px;
+    -fx-border-radius: 10px;
+    border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.searchBarBox .favourite-box .toggle-button {
+    -fx-content-display: left;
+}
+
+.searchBarBox .favourite-box .star-filled-icon {
+    -fx-border-color: black;
+    border-color: black;
+}
+
+.check-box {
+    -fx-cursor: hand;
+    cursor: hand;
+}
+
+.searchBarBox .button,
+.searchBarBox .favourite-box .toggle-button,
+.searchBarBox .text-field {
+    -fx-min-height: 35px;
+    min-height: 35px;
+}
+
+.searchBarBox .text-field {
+    -fx-min-width: 150px;
+    min-width: 150px;
+    -fx-max-width: 150px;
+    max-width: 150px;
+    -fx-font-size: 16px;
+    font-size: 16px;
+}
+
+.title {
+    -fx-font-weight: 800;
+    font-weight: 800;
+}
+
+.recipe-owner {
+    -fx-font-size: 24px;
+    font-size: 24px;
+    -fx-font-weight: 400;
+    font-weight: 400;
+    -fx-font-style: italic;
+    font-style: italic;
+}
+
+.loading {
+    -fx-font-weight: 700;
+    font-weight: 700;
+    -fx-font-size: 30px;
+    font-size: 30px;
+}
+
+.description {
+    -fx-font-style: italic;
+    font-style: italic;
+    -fx-font-weight: 300;
+    font-weight: 300;
+}
+
+.recipe {
+    -fx-padding: 20px;
+    padding: 20px;
+    -fx-border-radius: 20px;
+    border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+    cursor: hand;
+    -fx-background-color: linear-gradient(from 50% 50% to 100% 100%, -fx-accent-color, derive(-fx-accent-color, -20%));
+    background-color: linear-gradient(from 50% 50% to 100% 100%, -fx-accent-color, derive(-fx-accent-color, -20%));
+}
+
+.recipe .title {
+    -fx-font-size: 20px;
+    font-size: 20px;
+}
+
+.recipe .description {
+    -fx-font-size: 14px;
+    font-size: 14px;
+}
+
+.tag-box {
+    -fx-border-radius: 8px;
+    border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 2 5 2 5;
+    padding: 2 5 2 5;
+}
+
+.recipe .tag-box {
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+    -fx-border-width: 0;
+    border-width: 0;
+}
+
+.recipe-view .tag-box,
+.create-recipe-view .tag-box {
+    -fx-padding: 5 8 5 8;
+    padding: 5 8 5 8;
+    -fx-font-size: 14px;
+    font-size: 14px;
+    -fx-border-width: 2px;
+    border-width: 2px;
+    -fx-border-color: derive(-fx-main-color, -20%);
+    border-color: derive(-fx-main-color, -20%);
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+    -fx-background-radius: 10px;
+}
+
+.recipe:hover {
+    -fx-background-color: linear-gradient(from 50% 50% to 100% 100%, derive(-fx-accent-color, -15%), derive(-fx-accent-color, -35%));
+    background-color: linear-gradient(from 50% 50% to 100% 100%, derive(-fx-accent-color, -15%), derive(-fx-accent-color, -35%));
+}
+
+.search-result-title {
+    -fx-font-size: 20px;
+    font-size: 20px;
+}
+
+/*RecipeViewPane css*/
+.recipe-view .description {
+    -fx-font-size: 20px;
+    font-size: 20px;
+    -fx-background-color: linear-gradient(from 50% 50% to 100% 100%, -fx-accent-color, derive(-fx-accent-color, -20%));
+    background-color: linear-gradient(from 50% 50% to 100% 100%, -fx-accent-color, derive(-fx-accent-color, -20%));
+    -fx-border-radius: 20px;
+    border-radius: 20px;
+    -fx-background-radius: 20px;
+}
+
+.recipe-view .title {
+    -fx-font-size: 40px;
+    font-size: 40px;
+}
+
+.recipe-view .instructions {
+    -fx-font-size: 30px;
+    font-size: 30px;
+    -fx-font-weight: 700;
+    font-weight: 700;
+}
+
+.portions-box {
+    -fx-background-color: -fx-accent-color;
+    background-color: -fx-accent-color;
+    -fx-border-radius: 20px;
+    border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-color: 1px;
+    border-color: 1px;
+    -fx-border-color: black;
+    -fx-font-size: 20px;
+    font-size: 20px;
+}
+
+.portions-box .button {
+    -fx-font-size: 24px;
+    font-size: 24px;
+    -fx-font-weight: 800;
+    font-weight: 800;
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-cursor: hand;
+    cursor: hand;
+}
+
+.portions-box .button:hover {
+    -fx-text-fill: -fx-hover-color;
+}
+
+.recipe-view .warning-box {
+    -fx-font-size: 16px;
+    font-size: 16px;
+    -fx-background-color: derive(rgba(255, 152, 129), 20%);
+    background-color: derive(rgba(255, 152, 129), 20%);
+    -fx-border-radius: 16px;
+    border-radius: 16px;
+    -fx-background-radius: 16px;
+}
+
+.recipe-view .warning-box .note {
+    -fx-font-weight: bold;
+    font-weight: bold;
+    -fx-font-size: 17px;
+    font-size: 17px;
+}
+
+.utensils {
+    -fx-shape: "M416 0C400 0 288 32 288 176V288c0 35.3 28.7 64 64 64h32V480c0 17.7 14.3 32 32 32s32-14.3 32-32V352 240 32c0-17.7-14.3-32-32-32zM64 16C64 7.8 57.9 1 49.7 .1S34.2 4.6 32.4 12.5L2.1 148.8C.7 155.1 0 161.5 0 167.9c0 45.9 35.1 83.6 80 87.7V480c0 17.7 14.3 32 32 32s32-14.3 32-32V255.6c44.9-4.1 80-41.8 80-87.7c0-6.4-.7-12.8-2.1-19.1L191.6 12.5c-1.8-8-9.3-13.3-17.4-12.4S160 7.8 160 16V150.2c0 5.4-4.4 9.8-9.8 9.8c-5.1 0-9.3-3.9-9.8-9L127.9 14.6C127.2 6.3 120.3 0 112 0s-15.2 6.3-15.9 14.6L83.7 151c-.5 5.1-4.7 9-9.8 9c-5.4 0-9.8-4.4-9.8-9.8V16zm48.3 152l-.3 0-.3 0 .3-.7 .3 .7z";
+    -fx-min-width: 15px;
+    min-width: 15px;
+    -fx-min-height: 15px;
+    min-height: 15px;
+    -fx-background-color: black;
+    background-color: black;
+}
+
+.scroll-bar:vertical,
+.thumb,
+.increment-arrow,
+.decrement-arrow,
+.track,
+.increment-button,
+.decrement-button {
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
+
+.ingredient-list:hover .scroll-bar:vertical .thumb,
+.scroll-pane:hover .scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-accent-color;
+    background-color: -fx-accent-color;
+}
+
+.ingredient-list {
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-background-insets: 0px;
+    -fx-font-size: 20px;
+    font-size: 20px;
+}
+
+.ingredient-list .list-cell:even {
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+}
+
+.ingredient-list .list-cell:odd {
+    -fx-background-color: derive(-fx-main-color, -10%);
+    background-color: derive(-fx-main-color, -10%);
+}
+
+.ingredient-list .list-cell:empty {
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+}
+
+.recipe-view .step-box {
+    -fx-font-size: 20px;
+    font-size: 20px;
+}
+
+/*CookBookToolBar*/
+.update {
+    /*Defines svg shape for a update button */
+    -fx-shape: "M12,24c-4.1,0-7.8-2-10-5.4V24H0v-9h9v2H3.3c1.8,3.1,5,5,8.7,5c5.5,0,10-4.5,10-10h2C24,18.6,18.6,24,12,24z M2,12H0C0,5.4,5.4,0,12,0c4.1,0,7.8,2,10,5.4V0h2v9h-9V7h5.7c-1.8-3.1-5-5-8.7-5C6.5,2,2,6.5,2,12z";
+    -fx-min-width: 15px;
+    min-width: 15px;
+    -fx-min-height: 15px;
+    min-height: 15px;
+    -fx-background-color: black;
+    background-color: black;
+}
+
+.buttonsBox {
+    -fx-background-color: rgba(180, 225, 148, 0.8);
+    background-color: rgba(180, 225, 148, 0.8);
+    -fx-border-radius: 20px;
+    border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 18px;
+    font-size: 18px;
+    -fx-font-weight: 700;
+    font-weight: 700;
+}
+
+.home {
+    -fx-shape: "M 25 1.0507812 C 24.7825 1.0507812 24.565859 1.1197656 24.380859 1.2597656 L 1.3808594 19.210938 C 0.95085938 19.550938 0.8709375 20.179141 1.2109375 20.619141 C 1.5509375 21.049141 2.1791406 21.129062 2.6191406 20.789062 L 4 19.710938 L 4 46 C 4 46.55 4.45 47 5 47 L 19 47 L 19 29 L 31 29 L 31 47 L 45 47 C 45.55 47 46 46.55 46 46 L 46 19.710938 L 47.380859 20.789062 C 47.570859 20.929063 47.78 21 48 21 C 48.3 21 48.589063 20.869141 48.789062 20.619141 C 49.129063 20.179141 49.049141 19.550938 48.619141 19.210938 L 25.619141 1.2597656 C 25.434141 1.1197656 25.2175 1.0507812 25 1.0507812 z M 35 5 L 35 6.0507812 L 41 10.730469 L 41 5 L 35 5 z";
+}
+
+.envelope {
+    /*Defines svg shape for a envelope */
+    -fx-shape: "M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z";
+}
+
+.hamburger {
+    /*Defines svg shape for a hamburger menu */
+    -fx-shape: "M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z";
+}
+
+/* remove arrow in menu-button? https://stackoverflow.com/questions/30210117/remove-arrow-on-javafx-menubutton */
+.menu-button>.arrow-button {
+    -fx-min-width: 40;
+    min-width: 40;
+    -fx-padding: 0;
+    padding: 0;
+}
+
+/* remove arrow in menu-button? https://stackoverflow.com/questions/30210117/remove-arrow-on-javafx-menubutton */
+.menu-button>.arrow-button>.arrow {
+    -fx-padding: 0;
+    padding: 0;
+}
+
+.menu-button {
+    -fx-background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    -fx-cursor: hand;
+    cursor: hand;
+}
+
+.menu-button:hover {
+    -fx-background-color: -fx-hover-color;
+    background-color: -fx-hover-color;
+}
+
+.context-menu {
+    -fx-font-size: 16px;
+    font-size: 16px;
+}
+
+/* Table Management */
+.table-management .button {
+    -fx-cursor: hand;
+    cursor: hand;
+    -fx-min-width: 50px;
+    min-width: 50px;
+    -fx-border-radius: 10px;
+    border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-size: 20px;
+    font-size: 20px;
+}
+
+.table-management .table-view {
+    -fx-font-size: 24px;
+    font-size: 24px;
+    -fx-font-color: black;
+}
+
+.table-management .table-view .virtual-flow .scroll-bar:vertical,
+.table-management .table-view .virtual-flow .scroll-bar:vertical .track,
+.table-management .table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-management .table-view .virtual-flow .scroll-bar:horizontal,
+.table-management .table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-management .table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
+
+.table-management .align-left .label {
+    -fx-alignment: center-left;
+}
+
+.table-management .table-view:hover .scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-accent-color;
+    background-color: -fx-accent-color;
+}
+
+.table-management .table-view,
+.table-management .table-view .column-header-background .filler,
+.table-management .table-view .corner,
+.table-management .table-view .column-header {
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
+
+.table-management .table-view .column-header-background {
+    -fx-background-color: linear-gradient(from 50% 50% to 100% 100%, -fx-accent-color, derive(-fx-accent-color, -20%));
+    background-color: linear-gradient(from 50% 50% to 100% 100%, -fx-accent-color, derive(-fx-accent-color, -20%));
+    -fx-background-radius: 7px 7px 0px 0px;
+}
+
+.table-management .table-view .table-cell {
+    -fx-border-color: transparent;
+    border-color: transparent;
+    -fx-alignment: center-left;
+    -fx-text-fill: black;
+}
+
+.table-management .table-row-cell:even {
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+}
+
+.table-management .table-row-cell:odd {
+    -fx-background-color: derive(-fx-main-color, -10%);
+    background-color: derive(-fx-main-color, -10%);
+}
+
+.table-management .table-row-cell:empty {
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+}
+
+.table-management .table-view .virtual-flow .scroll-bar .increment-button,
+.table-management .table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    opacity: 0;
+    -fx-padding: 2;
+    padding: 2;
+}
+
+.table-management .tag-box {
+    -fx-border-width: 2px;
+    border-width: 2px;
+}
+
+.icon-button {
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-content-display: graphic-only;
+    -fx-cursor: hand;
+    cursor: hand;
+    -fx-min-width: 40px;
+    min-width: 40px;
+    -fx-border-radius: 10px;
+    border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.icon {
+    -fx-background-color: black;
+    background-color: black;
+    -fx-min-height: 32px;
+    min-height: 32px;
+    -fx-min-width: 32px;
+    min-width: 32px;
+    -fx-max-height: 32px;
+    max-height: 32px;
+    -fx-max-width: 32px;
+    max-width: 32px;
+}
+
+.delete-icon {
+    -fx-shape: "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z";
+}
+
+.delete-icon:hover {
+    -fx-background-color: rgb(166, 12, 12);
+    background-color: rgb(166, 12, 12);
+}
+
+.update-icon {
+    -fx-shape: "M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z";
+}
+
+.update-icon:hover {
+    -fx-background-color: derive(-fx-accent-color, -20%);
+    background-color: derive(-fx-accent-color, -20%);
+}
+
+.save-icon {
+    -fx-shape: "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V173.3c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32H64zm0 96c0-17.7 14.3-32 32-32H288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z";
+}
+
+.save-icon:hover {
+    -fx-background-color: derive(-fx-accent-color, -20%);
+    background-color: derive(-fx-accent-color, -20%);
+}
+
+.star-icon {
+    -fx-background-color: black;
+    background-color: black;
+    -fx-shape: "M287.9 0c9.2 0 17.6 5.2 21.6 13.5l68.6 141.3 153.2 22.6c9 1.3 16.5 7.6 19.3 16.3s.5 18.1-5.9 24.5L433.6 328.4l26.2 155.6c1.5 9-2.2 18.1-9.7 23.5s-17.3 6-25.3 1.7l-137-73.2L151 509.1c-8.1 4.3-17.9 3.7-25.3-1.7s-11.2-14.5-9.7-23.5l26.2-155.6L31.1 218.2c-6.5-6.4-8.7-15.9-5.9-24.5s10.3-14.9 19.3-16.3l153.2-22.6L266.3 13.5C270.4 5.2 278.7 0 287.9 0zm0 79L235.4 187.2c-3.5 7.1-10.2 12.1-18.1 13.3L99 217.9 184.9 303c5.5 5.5 8.1 13.3 6.8 21L171.4 443.7l105.2-56.2c7.1-3.8 15.6-3.8 22.6 0l105.2 56.2L384.2 324.1c-1.3-7.7 1.2-15.5 6.8-21l85.9-85.1L358.6 200.5c-7.8-1.2-14.6-6.1-18.1-13.3L287.9 79z";
+}
+
+.star-filled-icon {
+    -fx-background-color: #e8ca21;
+    background-color: #e8ca21;
+    -fx-shape: "M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z";
+}

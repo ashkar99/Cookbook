@@ -1,0 +1,7 @@
+
+# Create a new file in this directory called config.properties
+
+database.url=jdbc:mysql://139.162.164.160:3306/cookbook
+database.urlTest=jdbc:mysql://139.162.164.160:3306/cook_staging
+database.user=xxx
+database.password=xxx

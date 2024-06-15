@@ -1,0 +1,40 @@
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+# This file is a template, and might need editing before it works on your project.
+# This is the Gradle build system for JVM applications
+# https://gradle.org/
+# https://github.com/gradle/gradle
+# search for official images here: https://hub.docker.com/_/gradle/?tab=tags&page=1&ordering=last_updated
+# image: gradle:alpine
+image: gradle:8.7.0-jdk21-alpine
+
+
+stages:
+  - build
+  - test
+  - doc
+
+build:
+  stage: build
+  script: 
+    - echo "database.url=jdbc:mysql://139.162.164.160:3306/cookbook" > ./app/config.properties
+    - echo "database.urlTest=jdbc:mysql://139.162.164.160:3306/cook_staging" >> ./app/config.properties
+    - echo "database.user=pallekuling" >> ./app/config.properties
+    - echo "database.password=pallekula" >> ./app/config.properties
+    - cat ./app/config.properties
+    - ./gradlew build
+
+doc:
+  stage: doc
+  script:
+    - ./gradlew javadoc
+    - cp -R app/build/docs .
+#test:
+#  stage: test
+#  script: ./gradlew test
+#  artifacts:
+#    reports:
+#      junit:
+        #- app/build/test-results/TEST-*.xml
+        #- app/build/test-results/test/TEST-*.xml

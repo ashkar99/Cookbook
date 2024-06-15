@@ -1,0 +1,33 @@
+.admin-user-control-view {
+  -fx-font-size: 14px;
+  -fx-font-weight: 700;
+  -fx-background-color: -fx-main-color;
+}
+
+.admin-user-control-view .password-field {
+  -fx-font-size: 10px;
+}
+
+
+.admin-user-control-view .field-grid {
+  -fx-background-color: derive(-fx-accent-color, -20%);
+  -fx-border-color: black;
+  -fx-border-width: 1px;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+}
+
+.admin-user-control-view .button {
+  -fx-cursor: hand;
+  -fx-min-width: 40px;
+  -fx-border-radius: 10px;
+  -fx-background-radius: 10px;
+}
+
+.admin-user-control-view .text-field{
+  -fx-border-color: black;
+}
+
+.admin-user-control-view .text-field .error{
+  -fx-border-color: red;
+}

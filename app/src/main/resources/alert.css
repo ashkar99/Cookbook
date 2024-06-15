@@ -1,0 +1,26 @@
+* {
+    -fx-hover-color: derive(black, 50%);
+    -fx-accent-color: derive(#98CC81, 20%);
+    -fx-font-family: "Fira Sans", sans-serif;
+    -fx-main-color: #fdf6e3;
+}
+
+.dialog-pane {
+    -fx-background-color: -fx-main-color;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: derive(-fx-main-color, -10%);
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-text-fill: black;
+    -fx-font-weight: 700;
+}
+
+.dialog-pane .button {
+    -fx-cursor: hand;
+    -fx-min-width: 40px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}

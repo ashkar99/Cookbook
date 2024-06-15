@@ -1,0 +1,73 @@
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
+
+.table-view:hover .scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-accent-color;
+    background-color: -fx-accent-color;
+}
+
+.table-view,
+.table-view .column-header-background .filler,
+.table-view .corner,
+.table-view .column-header {
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(from 50% 50% to 100% 100%, -fx-accent-color, derive(-fx-accent-color, -20%));
+    background-color: linear-gradient(from 50% 50% to 100% 100%, -fx-accent-color, derive(-fx-accent-color, -20%));
+    -fx-background-radius: 7px 7px 0px 0px;
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent;
+    border-color: transparent;
+    -fx-text-fill: black;
+}
+
+.table-view {
+    -fx-font-size: 20px;
+    font-size: 20px;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: linear-gradient(from 50% 50% to 100% 100%, derive(-fx-accent-color, -15%), derive(-fx-accent-color, -35%));
+    background-color: linear-gradient(from 50% 50% to 100% 100%, derive(-fx-accent-color, -15%), derive(-fx-accent-color, -35%));
+}
+
+.table-row-cell:even {
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: derive(-fx-main-color, -10%);
+    background-color: derive(-fx-main-color, -10%);
+}
+
+.table-row-cell:empty {
+    -fx-background-color: -fx-main-color;
+    background-color: -fx-main-color;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    opacity: 0;
+    -fx-padding: 2;
+    padding: 2;
+}
+
+.table-row-cell:highlighted {
+    -fx-background-color: #81C483;
+    background-color: #81C483;
+    -fx-background-radius: 15px;
+}

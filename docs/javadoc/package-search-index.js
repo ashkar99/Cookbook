@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"cookbook"},{"l":"cookbook.controller"},{"l":"cookbook.model"},{"l":"cookbook.viewer"}];updateSearchResults();
